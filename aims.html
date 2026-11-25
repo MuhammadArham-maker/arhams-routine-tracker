@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aim | Routine Tracker</title>
+        <link rel="stylesheet" href="css/aims.css">
+        <link rel="manifest" href="/manifest.json">
+        <link rel="icon" type="image/png" href="icons/icon-192.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+        <header class="header">
+            <div class="nav-buttons">
+                <a href="index.html">Routine</a>
+                <a href="aims.html" class="active">Aims</a>
+            </div>
+            <div id="theme-toggle">
+                <div class="toggle-circle"></div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Daily Aims -->
+            <section id="daily" class="goals-section">
+                <h2>Daily Aims</h2>
+                <div class="aims-container" id="dailyContainer"></div>
+                <button class="primary-btn" onclick="showAddCategoryInput('daily')">+ Daily Aim</button>
+            </section>
+            <!-- Weekly Aims -->
+            <section id="weekly" class="goals-section">
+                <h2>Weekly Aims</h2>
+                <div class="aims-container" id="weeklyContainer"></div>
+                <button class="primary-btn" onclick="showAddCategoryInput('weekly')">+ Weekly Aim</button>
+            </section>
+            <!-- Monthly Aims -->
+            <section id="monthly" class="goals-section">
+                <h2>Monthly Goals</h2>
+                <div class="aims-container" id="monthlyContainer"></div>
+                <button class="primary-btn" onclick="showAddCategoryInput('monthly')">+ Monthly Goals</button>
+            </section>
+        </main>
+        <script src="aims.js"></script>
+    </body>
+</html>

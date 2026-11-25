@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Task Tracker</title>
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#1a1a2e">
+        <link rel="icon" type="image/png" href="icons/icon-192.png">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header">
+            <div class="nav-buttons">
+                <a href="index.html" class="active">Routine</a>
+                <a href="aims.html">Aims</a>
+            </div>
+            <div id="theme-toggle">
+                <div class="toggle-circle"></div>
+            </div>
+        </header>
+
+        <h1>Arham's Daily Task Tracker</h1>
+
+
+        <!-- Time reference (T, F, Z etc)-->
+        <div id="main-container"></div>
+
+        <!-- Button for adding time reference-->
+        <button id="add-time-btn">Add Time Reference</button>
+
+        <script src="app.js"></script>
+
+    </body>
+</html>

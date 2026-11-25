@@ -1,0 +1,455 @@
+/* 1. CSS Variables for Theming */
+:root {
+    /* DARK THEME (default) */
+    --bg-color: #1a1a2e;
+    --surface-color: rgba(23, 23, 43, 0.85);
+    --primary-color: #00f5c3;
+    --secondary-color: #e94560;
+    --text-color: #e0e0e0;
+    --text-muted-color: #a0a0b0;
+    --border-color: rgba(0, 245, 195, 0.2);
+    --secondary-border-color: rgba(233, 69, 96, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    --button-text-color: #1a1a2e;
+}
+
+.light-mode {
+    /* LIGHT THEME */
+    --bg-color: #f5f7fa;
+    --surface-color: rgba(255, 255, 255, 0.85);
+    --primary-color: #4a90e2;
+    --secondary-color: #f86c6b;
+    --text-color: #212529;
+    --text-muted-color: #6c757d;
+    --border-color: rgba(74, 144, 226, 0.2);
+    --secondary-border-color: rgba(248, 108, 107, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --button-text-color: #ffffff;
+}
+
+/* 2. Body and Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at top left, rgba(0, 245, 195, 0.1), transparent 30%),
+                      radial-gradient(circle at bottom right, rgba(233, 69, 96, 0.1), transparent 30%);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    padding-top: 80px;
+}
+
+/* 3. Typography and Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: var(--surface-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px var(--shadow-color);
+    z-index: 1000;
+}
+h1 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 245, 195, 0.5);
+}
+.light-mode h1 {
+    color: var(--text-color);
+    text-shadow: none;
+}
+
+/* --- Styles for the Navigation Buttons --- */
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    background: rgba(0,0,0,0.2);
+    padding: 5px;
+    border-radius: 12px;
+}
+.light-mode .nav-buttons {
+    background: rgba(0,0,0,0.05);
+}
+.nav-buttons a {
+    background: transparent;
+    border: none;
+    color: var(--text-muted-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.nav-buttons a.active {
+    background: var(--primary-color);
+    color: var(--button-text-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* --- Theme Toggle Button --- */
+#theme-toggle {
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 26px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 13px;
+    cursor: pointer;
+    padding: 3px;
+}
+#theme-toggle .toggle-circle {
+    width: 20px;
+    height: 20px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+.light-mode #theme-toggle .toggle-circle {
+    background-color: var(--primary-color);
+    transform: translateX(22px);
+}
+
+/* 4. Main Layout Containers */
+#main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.main-box {
+    background: var(--surface-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 25px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.top-row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+}
+
+.person-box, .main-tasks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.person-box {
+    width: 200px; 
+    flex-shrink: 0;
+}
+.main-tasks-container {
+    flex: 1;
+}
+
+/* 5. Task List Containers */
+.daily-tasks,
+.main-tasks {
+    flex: 1;
+    border: 1px dashed var(--border-color);
+    padding: 10px;
+    min-height: 50px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.15);
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.light-mode .daily-tasks, .light-mode .main-tasks {
+    background: #f8f9fa;
+}
+
+.main-tasks {
+    border-color: var(--secondary-border-color);
+    border-style: dotted;
+}
+
+/* 6. Input Fields Styling */
+input[type="text"], input[type="time"], .new-task-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+input[type="text"]::placeholder, .new-task-input::placeholder {
+    color: var(--text-muted-color);
+}
+input[type="text"]:focus, input[type="time"]:focus, .new-task-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 245, 195, 0.5);
+}
+.light-mode input[type="text"]:focus, .light-mode input[type="time"]:focus, .light-mode .new-task-input:focus {
+        box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+}
+
+.title-container {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; 
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.title-container input[type="text"] {
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 245, 195, 0.5);
+    padding: 5px 10px; 
+    margin: 0; 
+    text-align: left;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 20px;
+    flex-grow: 1; 
+}
+.light-mode .title-container input[type="text"] {
+    color: var(--text-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+}
+.title-container input[type="text"]:focus {
+    box-shadow: 0 0 15px rgba(0, 245, 195, 0.7);
+}
+.light-mode .title-container input[type="text"]:focus {
+    box-shadow: 0 0 15px rgba(74, 144, 226, 0.7);
+}
+
+.title-container input[type="time"] {
+    width: auto; 
+    padding: 4px 8px;
+    font-size: 12px;
+    background-color: rgba(0,0,0,0.2);
+    border-color: transparent;
+}
+.light-mode .title-container input[type="time"] {
+        background-color: rgba(255,255,255,0.2);
+}
+
+/* 7. Button design */
+button {
+    padding: 10px 15px;
+    font-size: 13px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, var(--primary-color), #48e6c8);
+    color: var(--button-text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.light-mode button {
+    background: linear-gradient(45deg, var(--primary-color), #8ab9f1);
+}
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 245, 195, 0.4);
+}
+.light-mode button:hover {
+        box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+}
+
+#add-time-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 24px;
+    font-size: 16px;
+}
+
+.add-task-btn {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+.rmv-btn {
+    align-self: flex-end;
+    background: linear-gradient(45deg, var(--secondary-color), #f76c8a);
+}
+.rmv-btn:hover {
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+}
+.light-mode .rmv-btn:hover {
+        box-shadow: 0 4px 15px rgba(248, 108, 107, 0.4);
+}
+
+/* 8. Task Item design */
+.task-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 8px;
+    padding: 10px;
+    position: relative;
+    transition: background-color 0.2s ease, border 0.2s ease;
+    border: 1px solid rgba(0, 245, 195, 0.15);
+}
+.light-mode .task-item {
+    background: #ffffff;
+    border: 1px solid #eef2f7;
+}
+
+.task-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 5px;
+}
+
+.main-tasks .task-details {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-item input[type="time"] {
+    padding: 4px 8px;
+    font-size: 11px;
+    background-color: var(--surface-color);
+    text-align: left;
+    width: fit-content;
+}
+
+.task-item .task-label {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.main-tasks .task-item .task-label {
+        flex-grow: 1;
+}
+
+/* 9. Custom Checkbox */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    min-width: 20px;
+    height: 20px;
+    background: var(--bg-color);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+input[type="checkbox"]:checked::before {
+    content: '✔';
+    color: var(--button-text-color);
+    font-size: 14px;
+}
+
+/* 10. Completed Task Styles */
+.task-item.completed {
+    background-color: rgba(0,0,0,0.1);
+}
+.light-mode .task-item.completed {
+    background-color: #f8f9fa; 
+    border-color: #eef2f7;
+}
+.task-item.completed .task-label {
+    text-decoration: line-through;
+    color: var(--text-muted-color);
+}
+
+/* Delete Button */
+.delete-task-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    width: 22px;
+    height: 22px;
+    background: rgba(233, 69, 96, 0.2);
+    color: var(--secondary-color);
+    border-radius: 50%;
+    padding: 0;
+    font-weight: bold;
+    font-size: 12px;
+    opacity: 0.5;
+}
+.task-item:hover .delete-task-btn {
+    opacity: 1;
+}
+.delete-task-btn:hover {
+    background: var(--secondary-color);
+    color: white;
+    box-shadow: none;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* 11. Responsive Design */
+@media (max-width: 768px) {
+    h1 { font-size: 24px; }
+    #main-container { padding: 10px; }
+    .main-box { padding: 15px; }
+    .top-row { flex-direction: column; }
+    .person-box { width: 100%; }
+
+    .daily-tasks {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 6px;
+    }
+    
+    .daily-tasks .task-item {
+        flex-basis: 30%;
+        flex-grow: 1;
+        padding: 1px;
+        gap: 4px;
+    }
+    .daily-tasks .task-item input[type="time"] {
+        font-size: 9px;
+    }
+    
+    .delete-task-btn {
+        top: auto;
+        bottom: 5px;
+        right: 5px;
+        transform: none;
+    }
+}

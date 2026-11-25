@@ -38,7 +38,7 @@ The app has **two main pages**:
 
 ### 📶 Offline Support
 The app is built as a **Progressive Web App (PWA)** — meaning once it’s opened, it can be accessed without an internet connection.  
-A **Service Worker (`sw.js`)** handles caching all essential files, ensuring the app loads instantly even in airplane mode.  
+The Service Worker (sw.js) caches the essential application files, allowing previously cached pages and assets to load without an internet connection.  
 Users can also **install the app** on their devices directly from the browser, just like a native mobile app.
 
 ---

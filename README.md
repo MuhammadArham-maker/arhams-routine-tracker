@@ -1,5 +1,11 @@
 # Daily Task & Aims Tracker
 
+## 🌐 Live Application
+
+**[Open Arham's Daily Task & Aims Tracker](https://arhams-routine-tracker.netlify.app/)**
+
+Try the deployed Progressive Web App and explore its Routine Tracker and Daily, Weekly, and Monthly Aims features.
+
 #### Video Demo
 
 [Watch the complete 4:38 application walkthrough](https://youtu.be/vs8LfbhtwP8)
